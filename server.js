@@ -39,13 +39,13 @@ if (process.env.RESET_DB === 'true') {
 
 
 // ERROR HANDLING:
-app.use((req, res, next) => {
-  if (mongoose.connection.readyState === 1 ) { // 1 då restrande inte är connected. 1 = connected
-    next() // Hanterar funktionen nedan, alltså när allt fungerar som vanligt
-  } else {
-    res.status(503).json({error: 'Service unavilable'})
-  }
-})
+// app.use((req, res, next) => {
+//   if (mongoose.connection.readyState === 1 ) { // 1 då restrande inte är connected. 1 = connected
+//     next() // Hanterar funktionen nedan, alltså när allt fungerar som vanligt
+//   } else {
+//     res.status(503).json({error: 'Service unavilable'})
+//   }
+// })
 
 // Start defining your routes here
 app.get("/", (req, res) => {
