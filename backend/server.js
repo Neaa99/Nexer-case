@@ -123,18 +123,18 @@ app.post('/add', async (req, res) => {
 //   }
 // })
 
-//  const DeleteBook = async (req, res) => {
-//   const { title } = req.params;
+ const DeleteBook = async (req, res) => {
+  const { title } = req.params;
 
-//   try {
-//     const DeleteBook = await Book.findOneAndDelete(title);
-//     res.status(200).json({ response: DeleteBook, success: true });
-//   } catch (error) {
-//     res.status(400).json({ error: "Book title not found!", success: false });
-//   }
-// }
+  try {
+    const DeleteBook = await Book.findOneAndDelete(title);
+    res.status(200).json({ response: DeleteBook, success: true });
+  } catch (error) {
+    res.status(400).json({ error: "Book title not found!", success: false });
+  }
+}
 
-// app.delete("/books/:title/delete", DeleteBook);
+app.delete("/books/:title/delete", DeleteBook);
 
 // app.delete("/books/:title", async (req, res) => {
 //   const { title } = req.params;
@@ -149,10 +149,11 @@ app.post('/add', async (req, res) => {
 //   })
 // })
 
-app.delete('/books/:title', async (res, res) => {
-  const deleteBook = await Book.findOneAndDelete(req.params.title)
-  await deleteBook.delete()
-})
+// app.delete('/books/:title', async (req, res) => {
+//   const deleteBook = await Book.findOne(req.params.title)
+//   await deleteBook.delete()
+//   res.json(deleteBook)
+// })
 
 
 // Start the server
