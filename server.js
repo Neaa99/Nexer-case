@@ -136,7 +136,7 @@ app.post('/add', async (req, res) => {
 
 // app.delete("/books/:title/delete", DeleteBook);
 
-app.delete("/books/:title/delete", async (req, res) => {
+app.delete("/books/:title", async (req, res) => {
   const { title } = req.params;
 
   await Book.findOneAndDelete(title, (err, deleted) => {
