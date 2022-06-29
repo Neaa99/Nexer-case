@@ -39,13 +39,13 @@ if (process.env.RESET_DB === 'true') {
 
 
 // ERROR HANDLING:
-// app.use((req, res, next) => {
-//   if (mongoose.connection.readyState === 1 ) { // 1 då restrande inte är connected. 1 = connected
-//     next() // Hanterar funktionen nedan, alltså när allt fungerar som vanligt
-//   } else {
-//     res.status(503).json({error: 'Service unavilable'})
-//   }
-// })
+app.use((req, res, next) => {
+  if (mongoose.connection.readyState === 1 ) { // 1 då restrande inte är connected. 1 = connected
+    next() // Hanterar funktionen nedan, alltså när allt fungerar som vanligt
+  } else {
+    res.status(503).json({error: 'Service unavilable'})
+  }
+})
 
 // Start defining your routes here
 app.get("/", (req, res) => {
@@ -82,7 +82,7 @@ app.get('/books/:title', async (req, res) => {
 // Get book by author
 app.get('/books/:author', async (req, res) => {
   try {
-    const bookAuthor = await Book.find({ medium: req.params.medium})
+    const bookAuthor = await Book.find({ author: req.params.author})
     if (bookAuthor.length === 0) {
       res.status(404).json({error: 'Author not found'})
     } else {
@@ -108,6 +108,46 @@ app.post('/add', async (req, res) => {
 })
 
 
+// Delete Book
+// app.delete('/books/:title/delete', async (req, res) => {
+//   try {
+//     //Success
+//     const { title } = req.body
+//     const deleteBook = await Book.findOne({title});
+//     await deleteBook.delete()
+//     res.json(deleteBook)
+//     res.status(200).json("Post has been deleted....");
+//   } catch (err) {
+//     //Bad request
+//     res.status(400).json({message: 'Could not delete book', errors: err.errors})
+//   }
+// })
+
+//  const DeleteBook = async (req, res) => {
+//   const { title } = req.params;
+
+//   try {
+//     const DeleteBook = await Book.findOneAndDelete(title);
+//     res.status(200).json({ response: DeleteBook, success: true });
+//   } catch (error) {
+//     res.status(400).json({ error: "Book title not found!", success: false });
+//   }
+// }
+
+// app.delete("/books/:title/delete", DeleteBook);
+
+app.delete("/books/:title/delete", async (req, res) => {
+  const { title } = req.params;
+
+  await Book.findOneAndDelete(title, (err, deleted) => {
+    if (err) {
+      console.log(err)
+      res.status(404).json({ error: "not deleted" })
+    } else {
+      res.json(deleted)
+    }
+  })
+})
 
 
 // Start the server
