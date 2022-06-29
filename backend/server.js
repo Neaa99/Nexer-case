@@ -136,17 +136,22 @@ app.post('/add', async (req, res) => {
 
 // app.delete("/books/:title/delete", DeleteBook);
 
-app.delete("/books/:title", async (req, res) => {
-  const { title } = req.params;
+// app.delete("/books/:title", async (req, res) => {
+//   const { title } = req.params;
 
-  await Book.findOneAndDelete(title, (err, deleted) => {
-    if (err) {
-      console.log(err)
-      res.status(404).json({ error: "not deleted" })
-    } else {
-      res.json(deleted)
-    }
-  })
+//   await Book.findOneAndDelete(title, (err, deleted) => {
+//     if (err) {
+//       console.log(err)
+//       res.status(404).json({ error: "not deleted" })
+//     } else {
+//       res.json(deleted)
+//     }
+//   })
+// })
+
+app.delete('/books/:title', async (res, res) => {
+  const deleteBook = await Book.findOneAndDelete(req.params.title)
+  await deleteBook.delete()
 })
 
 
