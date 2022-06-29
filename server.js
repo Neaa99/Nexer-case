@@ -103,7 +103,7 @@ app.post('/add', async (req, res) => {
     res.json(add)
   } catch (err) {
     //Bad request
-    res.status(400).json({message: 'Could not dave book', errors: err.errors})
+    res.status(400).json({message: 'Could not save book', errors: err.errors})
   }
 })
 
