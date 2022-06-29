@@ -60,7 +60,7 @@ app.get('/endpoints', (req, res) => {
 })
 
 // Get all Books
-app.get('/book', async (req, res) => {
+app.get('/books', async (req, res) => {
   const allBooks = await Book.find()
   res.json(allBooks)
 })
@@ -107,56 +107,17 @@ app.post('/add', async (req, res) => {
   }
 })
 
-// const DeleteBook = async (req, res) => {
-//   const { title } = req.params;
+// Delete book
+app.delete('/delete', async (req, res) => {
+  try {
+    const { title } = req.body
+    const deleteBook = await Book.findOneAndDelete({title})
+    res.json(deleteBook)
+  } catch (err) {
+    res.status(400).json({message: 'Could not delete book', errors: err.errors})
+  }
 
-//   try {
-//     const DeleteBook = await Book.findOneAndDelete({title});
-//     res.status(200).json({ response: DeleteBook, success: true });
-//   } catch (error) {
-//     res.status(400).json({ error: "Book title not found!", success: false });
-//   }
-// }
-
-// app.delete("/delete", DeleteBook);
-
-
-// Delete Book
-// app.delete('/delete', async (req, res) => {
-//   try {
-//     //Success
-//     const { title } = req.body
-//     const deleteBook = await Book.findOne({title});
-//     await deleteBook.delete()
-//     res.json(deleteBook)
-//     res.status(200).json("Post has been deleted....");
-//   } catch (err) {
-//     //Bad request
-//     res.status(400).json({message: 'Could not delete book', errors: err.errors})
-//   }
-// })
-
-
-
-
-// app.delete("/delete", async (req, res) => {
-//   const { title } = req.params;
-
-//   await Book.findOneAndDelete(title, (err, deleted) => {
-//     if (err) {
-//       console.log(err)
-//       res.status(404).json({ error: "not deleted" })
-//     } else {
-//       res.json(deleted)
-//     }
-//   })
-// })
-
-// app.delete('/delete', async (req, res) => {
-//   const deleteBook = await Book.findOne(req.params.title)
-//   await deleteBook.delete()
-//   res.json(deleteBook)
-// })
+})
 
 
 // Start the server
