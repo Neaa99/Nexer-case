@@ -108,7 +108,7 @@ app.post('/add', async (req, res) => {
 })
 
 // Delete book
-app.delete('//books/:title/delete', async (req, res) => {
+app.delete('/books/:title/delete', async (req, res) => {
   try {
     const { title } = req.body
     const deleteBook = await Book.findOneAndDelete({title})
