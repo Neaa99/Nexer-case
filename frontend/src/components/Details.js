@@ -1,11 +1,20 @@
 import React, { useState, useEffect } from 'react'
-import { useParams  } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
+
+import { BackIcon } from './BackIcon'
+import { DeleteBtn } from './DeleteBtn'
 
 export const Details = () => {
 
   const [details, setDetails] = useState([])
 
   const { title } = useParams()
+
+  const navigate = useNavigate()
+
+  const onBackButtonClick = () => {
+    navigate(-1);
+  };
 
   useEffect(() => {
     fetch(`https://nexer-case-linneafrisk.herokuapp.com/books/${title}`)
@@ -18,14 +27,19 @@ export const Details = () => {
 
   return (
     <div>
-      All books:
+      <div className='details-header'>
+        <button className="backLink" onClick={onBackButtonClick}>
+          <BackIcon />
+        </button>
+        <h1 className="main-title">{title}</h1>
+      </div>
+      <section className="details-container">
 
-      <section>
+              <div className="details">
 
-              <div className="info-details">
-
-                  <h3 className="info-title">{details.title}</h3>   
-                <p className="info-date">{details.author}</p>
+                <h3 className="details-title">{details.title}</h3>   
+                <p className="details-date">{details.author}</p>
+                <DeleteBtn/>
               </div>
 
       </section>
