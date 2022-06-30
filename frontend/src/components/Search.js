@@ -45,7 +45,6 @@ export const Search = () => {
             <input
               className='writeInput'
               type="text"
-            //   value={search}
               onChange={(event) => setSearch(event.target.value)} />
 
           <button className="search-button" type="submit" onClick={handleSubmit}>SEARCH</button>
