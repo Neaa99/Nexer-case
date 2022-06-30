@@ -21,7 +21,7 @@ export const AllBooks = () => {
     <div>
       All books:
 
-      <section>
+      <section className='all-books'>
           {books.map((book) => (
             <>
               <div className="info-details">
