@@ -22,21 +22,19 @@ export const AllBooks = () => {
       <h1 className="main-title">All books:</h1>
 
       <div className='buttons'>
-        <button className="btn">
         <Link 
               to={`/add`} 
-              key={uniqid()}>
+              key={uniqid()}
+              className="btn">
                 <p>Add a book</p>
         </Link>
-        </button>
 
-        <button className="btn">
         <Link 
               to={`/search`} 
-              key={uniqid()}>
+              key={uniqid()}
+              className="btn">
                 <p>Search for a book</p>
         </Link>
-        </button>
       </div>
 
       <section className='all-books'>

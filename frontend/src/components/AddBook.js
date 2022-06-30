@@ -37,40 +37,40 @@ export const AddBook = () => {
 
     return (
         <section className="form-container">
-        <button className="backLink" onClick={onBackButtonClick}>
-          <BackIcon />
-        </button>
-
-        <form className="add-form" onSubmit={(e) => add(e)}>
-        <h2 className="main-title">Add a book here</h2>
-
-        <div className="detailsInput">
-              <label>Title:</label>
-              <input
-                className="writeInput"
-                placeholder="Enter title of the book here"
-                type="text"
-                autoFocus={true}
-                value={title}
-                required
-                onChange={(e) => setTitle(e.target.value)}
-              />
-
-              <label>Author:</label>
-              <input
-                className="writeInput"
-                placeholder="Enter author of the book here"
-                type="text"
-                autoFocus={true}
-                value={author}
-                required
-                onChange={(e) => setAuthor(e.target.value)}
-              />
-            </div>
-            <button className="writeSubmit" type="submit">
-            Post
+          <button className="backLink" onClick={onBackButtonClick}>
+            <BackIcon />
           </button>
-        </form>
+
+          <form className="add-form" onSubmit={(e) => add(e)}>
+            <h2 className="main-title">Add a book here</h2>
+
+            <div className="detailsInput">
+                  <label>Title:</label>
+                  <input
+                    className="writeInput"
+                    placeholder="Enter title of the book here"
+                    type="text"
+                    autoFocus={true}
+                    value={title}
+                    required
+                    onChange={(e) => setTitle(e.target.value)}
+                  />
+
+                  <label>Author:</label>
+                  <input
+                    className="writeInput"
+                    placeholder="Enter author of the book here"
+                    type="text"
+                    autoFocus={true}
+                    value={author}
+                    required
+                    onChange={(e) => setAuthor(e.target.value)}
+                  />
+                </div>
+              <button className="writeSubmit" type="submit">
+              Post
+            </button>
+          </form>
         </section>
     )
 }

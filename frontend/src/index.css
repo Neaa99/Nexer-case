@@ -163,6 +163,10 @@ label {
   gap: 20px;
 }
 
+.buttons p {
+  text-align: center;
+}
+
 .btn {
   width: 150px;
   border-radius: 5px;

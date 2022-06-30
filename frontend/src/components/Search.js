@@ -1,12 +1,20 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import uniqid from 'uniqid';
+
+import { BackIcon } from "./BackIcon";
 
 
 export const Search = () => {
 
     const [search, setSearch] = useState('')
     const [active, setActive] = useState(false)
+
+    const navigate = useNavigate()
+
+    const onBackButtonClick = () => {
+        navigate(-1);
+      };
 
     const btnHandler = () => {
         setActive(!active)
@@ -29,6 +37,9 @@ export const Search = () => {
 
     return (
         <section className="form-container">
+            <button className="backLink" onClick={onBackButtonClick}>
+            <BackIcon />
+          </button>
         <form className="search-form">
         <label>Search:</label>
             <input
