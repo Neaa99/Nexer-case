@@ -21,6 +21,24 @@ export const AllBooks = () => {
     <div>
       <h1 className="main-title">All books:</h1>
 
+      <div className='buttons'>
+        <button className="btn">
+        <Link 
+              to={`/add`} 
+              key={uniqid()}>
+                <p>Add a book</p>
+        </Link>
+        </button>
+
+        <button className="btn">
+        <Link 
+              to={`/search`} 
+              key={uniqid()}>
+                <p>Search for a book</p>
+        </Link>
+        </button>
+      </div>
+
       <section className='all-books'>
           {books.map((book) => (
             <Link 
@@ -34,7 +52,8 @@ export const AllBooks = () => {
               </Link>
           ))}
       </section>
-    
+
+      
     </div>
   )
 }

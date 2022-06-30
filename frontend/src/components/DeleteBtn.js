@@ -1,9 +1,21 @@
 import React from "react";
+import { useParams, useNavigate } from "react-router-dom";
+import axios from 'axios'
+
 
 export const DeleteBtn = () => {
 
+  const { title } = useParams()
+  const navigate = useNavigate()
+    
+
     const handleDelete = async () => {
-        
+        try {
+            await axios.delete(
+                `https://nexer-case-linneafrisk.herokuapp.com/books/${title}/delete`, { data: { title: title } }
+                );
+            navigate("/");
+          } catch (err) {}
     }
 
     return (
