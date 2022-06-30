@@ -47,7 +47,7 @@ app.use((req, res, next) => {
   }
 })
 
-// Start defining your routes here
+// Routes
 app.get("/", (req, res) => {
   res.send(
     {"Welcome":"Nexer case by Linnea Frisk",
@@ -96,13 +96,11 @@ app.get('/books/:author', async (req, res) => {
 // Create book
 app.post('/add', async (req, res) => {
   try {
-    //Success
     const { title, author } = req.body
     const add = new Book({ title, author })
     await add.save()
     res.json(add)
   } catch (err) {
-    //Bad request
     res.status(400).json({message: 'Could not save book', errors: err.errors})
   }
 })

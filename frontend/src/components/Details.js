@@ -26,17 +26,17 @@ export const Details = () => {
     }, [title])
 
   return (
-    <div>
-      <div className='details-header'>
+    <>
+      <section className='details-header'>
         <button className="backLink" onClick={onBackButtonClick}>
           <BackIcon />
         </button>
         <h1 className="main-title">{title}</h1>
-      </div>
+      </section>
+
       <section className="details-container">
 
               <div className="details">
-
                 <h3 className="details-title">{details.title}</h3>   
                 <p className="details-date">{details.author}</p>
                 <DeleteBtn/>
@@ -44,6 +44,6 @@ export const Details = () => {
 
       </section>
     
-    </div>
+    </>
   )
 }

@@ -33,15 +33,15 @@ export const Search = () => {
         })
     }
 
-   
-
     return (
         <section className="form-container">
+
             <button className="backLink" onClick={onBackButtonClick}>
-            <BackIcon />
-          </button>
+                <BackIcon />
+            </button>
+
         <form className="search-form">
-        <label>Search:</label>
+            <label>Search:</label>
             <input
               className='writeInput'
               type="text"
@@ -60,10 +60,6 @@ export const Search = () => {
                 <p>{search.author}</p>
                 </div>
             </Link>
-        
-
-
-        
         </section>
     )
 }

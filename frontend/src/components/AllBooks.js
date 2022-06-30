@@ -51,7 +51,6 @@ export const AllBooks = () => {
           ))}
       </section>
 
-      
     </div>
   )
 }
