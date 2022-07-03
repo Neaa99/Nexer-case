@@ -11,9 +11,7 @@ export const AllBooks = () => {
       fetch(`https://nexer-case-linneafrisk.herokuapp.com/books`)
           .then(res => res.json())
           .then(data => {
-            console.log(data)
             setBooks(data)
-  
           })
       }, [])
 

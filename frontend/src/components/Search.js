@@ -27,9 +27,7 @@ export const Search = () => {
         fetch(`https://nexer-case-linneafrisk.herokuapp.com/books/${search}`)
         .then((res) => res.json())
         .then((data) => {
-            setSearch(data)
-            console.log(data)
-            
+            setSearch(data)            
         })
     }
 

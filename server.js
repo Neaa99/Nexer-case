@@ -8,18 +8,21 @@ import data from './Data/Books.json'
 
 dotenv.config()
 
+// This connects the code to Mongo
 const mongoUrl = process.env.MONGO_URL || "mongodb://localhost/Nexer-case";
 mongoose.connect(mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true });
 mongoose.Promise = Promise;
 
+// Sets the port
 const port = process.env.PORT || 8080;
-const app = express();
+const app = express(); //Nodejs framework
 
 // Add middlewares to enable cors and json body parsing
+// CORS is a node.js package for providing a Connect/Express middleware that can be used to enable CORS with various options.
 app.use(cors());
 app.use(express.json());
 
-
+// Mongoose Model
 const Book = mongoose.model("Book", {
   "title": String,
   "author": String
@@ -27,8 +30,9 @@ const Book = mongoose.model("Book", {
 
 if (process.env.RESET_DB === 'true') {
   const seedDatabase = async () => {
-    await Book.deleteMany({})
+    await Book.deleteMany({}) // Clears the database
 
+    // Add out items form data to the database, and saves them
     data.forEach((item) => {
       const newBook = new Book(item)
       newBook.save()

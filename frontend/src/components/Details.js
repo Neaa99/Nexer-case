@@ -20,7 +20,6 @@ export const Details = () => {
     fetch(`https://nexer-case-linneafrisk.herokuapp.com/books/${title}`)
         .then(res => res.json())
         .then(data => {
-            console.log(data)
             setDetails(data)
         })
     }, [title])

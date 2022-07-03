@@ -33,6 +33,10 @@ body {
   border-radius: 10px;
 }
 
+.info-details-closed {
+  display: none;
+}
+
 .info-details:hover {
   transform: scale(1.2);
   transition: 0.5s ease;
