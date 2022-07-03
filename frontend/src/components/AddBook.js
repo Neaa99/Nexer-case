@@ -29,7 +29,6 @@ export const AddBook = () => {
           .then((res) => res.json())
           .then((data) => {
             if (data.success === false) {
-              res.json('Could not save book')
             } else {
               navigate("/");
             }
