@@ -186,7 +186,7 @@ label {
   flex-direction: column;
   align-items: center;
   gap: 20px;
-  padding: 100px;
+  margin-top: 50px;
 }
 
 .search-button {
@@ -201,4 +201,19 @@ label {
 
 .search-button:hover {
   box-shadow: 6px 6px 20px rgba(122,122,122,0.212);
+}
+
+@media (max-width: 700px) {
+  .details {
+    margin: 50px;
+    padding: 10px;
+    height: 500px;
+  }
+  .details-header {
+    flex-direction: column;
+  }
+  .add-form {
+    width: 350px;
+    margin-top: 20px;
+  }
 }
